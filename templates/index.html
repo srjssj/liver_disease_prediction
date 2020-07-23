@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <style>
+				body {
+				font-family: Arial, Helvetica, sans-serif;
+				height: 100vh;
+				margin: 0;
+				padding: 0;
+				background-color: grey;
+			}
+
+			.login {
+				display: flex;
+				flex: 1;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+			}
+
+			.login form {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 25%;    
+			}
+
+			.login ul {
+				list-style: none;
+				padding: 0;
+				width: 90%;
+			}
+
+			.login li {
+				padding: 5px 0;    
+			}
+
+			.login input {
+				width: 100%;
+				height: 30px;
+				border-radius: 20px;
+				padding-left: 10px;
+				background-color: #fff;
+				border: 2px solid #1B9CFC;
+			}
+
+			.login input:focus {
+				border: 2px solid #023d74;
+				background-color: rgb(215, 244, 255);
+			}
+
+			.login button {
+				text-decoration: none;
+				border: none;
+				cursor: pointer;
+				background-color: #55E6C1;
+				padding: 15px;
+				border-radius: 5px;
+				margin-bottom: 5px;
+			}
+
+			.login button:hover {
+				background-color: #58B19F;
+			}
+  
+  </style>
+  
+  
+</head>
+
+
+<body>
+ <div class="login">
+	<h1>Predict Liver Disease</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post" class = "submission_form">
+		
+  
+		
+		<ul >
+		  <li>        <input type="text" name="age" placeholder="Age" required="required" /></li>
+		  <li>        <input type="text" name="gender" placeholder="Gender" required="required" /></li>
+		  <li>		<input type="text" name="total_bilirubin" placeholder="Total Bilirubin" required="required" /></li>
+		  <li>		<input type="text" name="direct_bilirubin" placeholder="Direct Bilirubin" required="required" /></li>
+		  <li>       <input type="text" name="alkaline_phosphotase" placeholder="Alkaline Phosphotase" required="required" /></li>
+		  <li>		<input type="text" name="alamine_aminotransferase" placeholder="Alamine Aminotransferase" required="required" /></li>
+		  <li>		<input type="text" name="aspartate_aminotransferase" placeholder="Aspartate Aminotransferase" required="required" /></li>
+		  <li>		<input type="text" name="total_protiens" placeholder="Total Protiens" required="required" /></li>
+		  <li>        <input type="text" name="albumin" placeholder="Albumin" required="required" /></li>
+		  <li>		<input type="text" name="albumin_and_globulin_ratio" placeholder="Albumin and Globulin Ratio" required="required" /></li>
+		  
+		</ul>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
